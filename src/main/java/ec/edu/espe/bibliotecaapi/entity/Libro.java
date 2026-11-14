@@ -9,7 +9,9 @@ public class Libro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
+    @Column(nullable = false, unique = true, length = 32)
     private String isbn;
+    @Column(nullable = false)
     private Integer stockDisponible;
 
     @ManyToOne
