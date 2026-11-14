@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163b3a">
+  <title>Biblioteca · Grupo 3</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Biblioteca, inicio">
+        <span class="brand-symbol" aria-hidden="true">B<span>·</span></span>
+        <span>Biblioteca<small>GRUPO 03</small></span>
+      </a>
+      <p class="nav-label">ESPACIO DE TRABAJO</p>
+      <nav aria-label="Secciones de la biblioteca">
+        <button class="nav-item active" data-section="libros" aria-current="page"><span aria-hidden="true">▤</span> Libros</button>
+        <button class="nav-item" data-section="prestamos"><span aria-hidden="true">↗</span> Préstamos</button>
+        <button class="nav-item" data-section="autores"><span aria-hidden="true">✎</span> Autores</button>
+        <button class="nav-item" data-section="usuarios"><span aria-hidden="true">◎</span> Usuarios</button>
+      </nav>
+      <div class="sidebar-note"><span class="note-mark" aria-hidden="true">“</span><p>Un libro encuentra su lugar<br>cuando llega a un lector.</p><small>GESTIÓN DE BIBLIOTECA</small></div>
+      <div class="connection"><span id="connection-dot" class="connection-dot"></span><span id="connection-text">Conectando…</span></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><span>Panel de gestión <span class="topbar-divider">/</span> <strong id="breadcrumb">Libros</strong></span><span class="team-badge">G3 <span>Programación Avanzada</span></span></header>
+      <main id="main" tabindex="-1">
+        <section class="page-intro" aria-labelledby="page-title">
+          <div><p class="eyebrow">TODO EN SU LUGAR</p><h1 id="page-title">Tu biblioteca, al día.</h1><p class="intro-copy">Gestiona el catálogo, conecta lectores y lleva el control de cada préstamo.</p></div>
+          <button id="quick-loan" class="button primary"><span aria-hidden="true">＋</span> Nuevo préstamo</button>
+        </section>
+        <div id="notification" class="notification" role="status" aria-live="polite" hidden></div>
+        <section class="stats" aria-label="Resumen de la biblioteca">
+          <article class="stat-card"><span class="stat-label">Títulos en catálogo</span><strong id="stat-books">—</strong><small>Historias por descubrir</small><span class="stat-icon" aria-hidden="true">▤</span></article>
+          <article class="stat-card"><span class="stat-label">Ejemplares disponibles</span><strong id="stat-stock">—</strong><small>Listos para un nuevo lector</small><span class="stat-icon" aria-hidden="true">↗</span></article>
+          <article class="stat-card featured"><span class="stat-label">Préstamos pendientes</span><strong id="stat-loans">—</strong><small>Seguimiento de devoluciones</small><span class="stat-icon" aria-hidden="true">◷</span></article>
+          <article class="stat-card"><span class="stat-label">Lectores registrados</span><strong id="stat-users">—</strong><small>Nuestra comunidad</small><span class="stat-icon" aria-hidden="true">◎</span></article>
+        </section>
+        <section class="catalog-panel" aria-labelledby="section-title">
+          <div class="panel-heading"><div><h2 id="section-title">Catálogo de libros</h2><p id="section-description">Todos los títulos y su disponibilidad, en un mismo lugar.</p></div><button id="create-record" class="button primary">＋ Nuevo libro</button></div>
+          <div class="toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar registros</span><input id="search" type="search" placeholder="Buscar por título, ISBN o autor…" autocomplete="off"></label><label id="loan-filter-wrapper" class="filter-field" hidden><span class="sr-only">Estado del préstamo</span><select id="loan-filter"><option value="todos">Todos los estados</option><option value="PENDIENTE">Pendientes</option><option value="DEVUELTO">Devueltos</option></select></label><button id="refresh" class="button secondary" aria-label="Actualizar datos"><span aria-hidden="true">↻</span> Actualizar</button></div>
+          <div id="records" aria-live="polite"><div class="loading-state">Cargando la biblioteca…</div></div>
+          <div class="panel-footer"><span id="record-count">Consultando registros</span><span>Los cambios se guardan en la base de datos</span></div>
+        </section>
+        <footer class="page-footer"><span>Biblioteca · Grupo 3</span><span>Más orden. Más lecturas.</span></footer>
+      </main>
+    </div>
+  </div>
+  <dialog id="record-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-heading"><div><p class="eyebrow">BIBLIOTECA · GRUPO 3</p><h2 id="dialog-title">Nuevo registro</h2></div><button type="button" id="close-dialog" class="close-button" aria-label="Cerrar formulario">×</button></div>
+    <p id="dialog-description" class="dialog-description"></p>
+    <form id="record-form"><div id="form-fields" class="form-grid"></div><div id="form-error" class="form-error" role="alert" hidden></div><div class="dialog-actions"><button id="cancel-dialog" type="button" class="button secondary">Cancelar</button><button id="save-record" type="submit" class="button primary">Guardar</button></div></form>
+  </dialog>
+</body>
+</html>
